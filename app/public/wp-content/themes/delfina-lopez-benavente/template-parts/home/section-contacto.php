@@ -52,8 +52,8 @@ $form_ok   = $has_form && $form_post && get_post_type( $form_post ) === 'wpforms
 					<li>
 						<span class="dlb-contacto__label"><?php esc_html_e( 'Instagram:', 'delfina-lopez-benavente' ); ?></span>
 						<?php
-						$instagram_url = get_theme_mod( 'dlb_instagram_url', '' );
-						$instagram_handle = get_theme_mod( 'dlb_instagram_handle', '' );
+						$instagram_url    = (string) get_option( 'delfina_lopez_benavente_instagram_url', '' );
+						$instagram_handle = (string) get_option( 'delfina_lopez_benavente_instagram_handle', '' );
 						if ( $instagram_url || $instagram_handle ) :
 							$url = $instagram_url ?: 'https://instagram.com/' . ltrim( $instagram_handle, '@' );
 							$label = $instagram_handle ?: $instagram_url;

@@ -85,6 +85,30 @@ function delfina_lopez_benavente_setup_page(): void {
 		<?php
 	}
 
+	if ( isset( $_POST['dlb_save_instagram_profile'] ) ) {
+		check_admin_referer( 'dlb_save_instagram_profile' );
+		$raw_url    = isset( $_POST['dlb_instagram_url'] ) ? wp_unslash( (string) $_POST['dlb_instagram_url'] ) : '';
+		$raw_handle = isset( $_POST['dlb_instagram_handle'] ) ? wp_unslash( (string) $_POST['dlb_instagram_handle'] ) : '';
+		update_option( 'delfina_lopez_benavente_instagram_url', esc_url_raw( $raw_url ) );
+		update_option( 'delfina_lopez_benavente_instagram_handle', sanitize_text_field( $raw_handle ) );
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php esc_html_e( 'Perfil de Instagram guardado.', 'delfina-lopez-benavente' ); ?></p>
+		</div>
+		<?php
+	}
+
+	if ( isset( $_POST['dlb_clear_instagram_profile'] ) ) {
+		check_admin_referer( 'dlb_clear_instagram_profile' );
+		delete_option( 'delfina_lopez_benavente_instagram_url' );
+		delete_option( 'delfina_lopez_benavente_instagram_handle' );
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php esc_html_e( 'Perfil de Instagram eliminado. En Contacto se mostrará "Por configurar".', 'delfina-lopez-benavente' ); ?></p>
+		</div>
+		<?php
+	}
+
 	if ( isset( $_GET['dlb_create_form'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'dlb_create_form' ) ) {
 		$form_id = delfina_lopez_benavente_create_contact_form();
 		if ( $form_id ) {
@@ -231,14 +255,61 @@ function delfina_lopez_benavente_setup_page(): void {
 					<?php esc_html_e( 'Quitar shortcode', 'delfina-lopez-benavente' ); ?>
 				</button>
 			</form>
+		<?php endif; ?>
 
-			<h4><?php esc_html_e( 'Vista previa', 'delfina-lopez-benavente' ); ?></h4>
-			<div style="border: 1px solid #dcdcde; padding: 1rem; background: #fff; max-width: 900px;">
-				<?php echo do_shortcode( $ig_shortcode ); ?>
-			</div>
-			<p class="description">
-				<?php esc_html_e( 'La previsualización carga el shortcode tal cual. Si el plugin solo encola sus estilos/scripts en el front, la vista previa puede verse sin estilos; en la home se verá correcto.', 'delfina-lopez-benavente' ); ?>
+		<?php
+		$ig_profile_url    = (string) get_option( 'delfina_lopez_benavente_instagram_url', '' );
+		$ig_profile_handle = (string) get_option( 'delfina_lopez_benavente_instagram_handle', '' );
+		?>
+
+		<h3><?php esc_html_e( 'Enlace de perfil (sección Contacto)', 'delfina-lopez-benavente' ); ?></h3>
+		<p class="description">
+			<?php esc_html_e( 'Si rellenas solo el handle se construirá la URL automáticamente. Si rellenas la URL, se usará como destino del enlace; el handle se usará como texto visible.', 'delfina-lopez-benavente' ); ?>
+		</p>
+		<form method="post" action="">
+			<?php wp_nonce_field( 'dlb_save_instagram_profile' ); ?>
+			<p>
+				<label for="dlb_instagram_handle">
+					<?php esc_html_e( 'Handle (texto visible):', 'delfina-lopez-benavente' ); ?>
+				</label>
+				<br>
+				<input
+					type="text"
+					id="dlb_instagram_handle"
+					name="dlb_instagram_handle"
+					value="<?php echo esc_attr( $ig_profile_handle ); ?>"
+					class="regular-text"
+					placeholder="@delfina.lopezbenavente"
+				>
 			</p>
+			<p>
+				<label for="dlb_instagram_url">
+					<?php esc_html_e( 'URL del perfil (opcional):', 'delfina-lopez-benavente' ); ?>
+				</label>
+				<br>
+				<input
+					type="url"
+					id="dlb_instagram_url"
+					name="dlb_instagram_url"
+					value="<?php echo esc_attr( $ig_profile_url ); ?>"
+					class="regular-text"
+					placeholder="https://instagram.com/tu_usuario"
+				>
+			</p>
+			<p>
+				<button type="submit" name="dlb_save_instagram_profile" class="button button-primary">
+					<?php esc_html_e( 'Guardar perfil', 'delfina-lopez-benavente' ); ?>
+				</button>
+			</p>
+		</form>
+
+		<?php if ( '' !== $ig_profile_url || '' !== $ig_profile_handle ) : ?>
+			<form method="post" action="" style="margin-top: 0.5rem;">
+				<?php wp_nonce_field( 'dlb_clear_instagram_profile' ); ?>
+				<button type="submit" name="dlb_clear_instagram_profile" class="button">
+					<?php esc_html_e( 'Quitar perfil', 'delfina-lopez-benavente' ); ?>
+				</button>
+			</form>
 		<?php endif; ?>
 
 		<hr>
