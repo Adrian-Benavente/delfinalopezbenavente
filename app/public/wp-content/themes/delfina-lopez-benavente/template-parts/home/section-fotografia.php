@@ -24,8 +24,6 @@ $fotografias = new WP_Query(
 	)
 );
 
-$show_gallery_footer = $fotografias->post_count > 0;
-
 /**
  * Abre un slide del carrusel con retardo de animación escalonada.
  *
@@ -156,12 +154,5 @@ $dlb_fotografia_open_slide = static function ( int $index ): void {
 				</button>
 			</div>
 		</div>
-		<?php if ( $show_gallery_footer ) : ?>
-			<div class="dlb-fotografia__footer">
-				<a href="<?php echo esc_url( get_post_type_archive_link( 'fotografia' ) ); ?>" class="dlb-button dlb-button--secondary">
-					<?php esc_html_e( 'Ver galería completa', 'delfina-lopez-benavente' ); ?>
-				</a>
-			</div>
-		<?php endif; ?>
 	</div>
 </section>
