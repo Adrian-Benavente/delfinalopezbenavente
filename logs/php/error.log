@@ -1,0 +1,61 @@
+[14-Mar-2026 18:34:53 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[14-Mar-2026 18:35:32 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[14-Mar-2026 18:36:03 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[14-Mar-2026 18:44:47 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[14-Mar-2026 18:45:17 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[14-Mar-2026 18:45:40 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[21-Mar-2026 13:04:38 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[21-Mar-2026 13:05:24 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[21-Mar-2026 13:05:53 UTC] PHP Warning:  foreach() argument must be of type array|object, null given in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-admin/includes/class-wp-list-table.php on line 1764
+[21-Mar-2026 13:24:24 UTC] WordPress database error Table 'wp_sbi_instagram_feed_locator' already exists for query CREATE TABLE wp_sbi_instagram_feed_locator (
+				id BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                feed_id VARCHAR(50) DEFAULT '' NOT NULL,
+                post_id BIGINT(20) UNSIGNED NOT NULL,
+                html_location VARCHAR(50) DEFAULT 'unknown' NOT NULL,
+                shortcode_atts LONGTEXT NOT NULL,
+                last_update DATETIME
+            ); made by require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, sbi_check_for_db_updates, SB_Instagram_Feed_Locator::create_table
+[21-Mar-2026 13:24:24 UTC] WordPress database error Duplicate key name 'feed_id' for query ALTER TABLE wp_sbi_instagram_feed_locator ADD INDEX feed_id (feed_id) made by require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, sbi_check_for_db_updates, SB_Instagram_Feed_Locator::create_table
+[21-Mar-2026 13:24:24 UTC] WordPress database error Duplicate key name 'post_id' for query ALTER TABLE wp_sbi_instagram_feed_locator ADD INDEX post_id (post_id) made by require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, sbi_check_for_db_updates, SB_Instagram_Feed_Locator::create_table
+[21-Mar-2026 13:24:24 UTC] WordPress database error Table 'wp_sbi_feeds' already exists for query 
+			CREATE TABLE wp_sbi_feeds (
+				id bigint(20) unsigned NOT NULL auto_increment,
+				feed_name text NOT NULL default '',
+				feed_title text NOT NULL default '',
+				settings longtext NOT NULL default '',
+				author bigint(20) unsigned NOT NULL default '1',
+				status varchar(255) NOT NULL default '',
+				last_modified datetime NOT NULL,
+				PRIMARY KEY  (id),
+				KEY author (author)
+			) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci; made by require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, sbi_check_for_db_updates, InstagramFeed\Builder\SBI_Db::create_tables
+[21-Mar-2026 13:24:24 UTC] WordPress database error Table 'wp_sbi_feed_caches' already exists for query 
+				CREATE TABLE wp_sbi_feed_caches (
+				id bigint(20) unsigned NOT NULL auto_increment,
+				feed_id varchar(255) NOT NULL default '',
+                cache_key varchar(255) NOT NULL default '',
+                cache_value longtext NOT NULL default '',
+                cron_update varchar(20) NOT NULL default 'yes',
+                last_updated datetime NOT NULL,
+                PRIMARY KEY  (id),
+                KEY feed_id (feed_id(191))
+            ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci; made by require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, sbi_check_for_db_updates, InstagramFeed\Builder\SBI_Db::create_tables
+[21-Mar-2026 13:24:24 UTC] WordPress database error Table 'wp_sbi_sources' already exists for query 
+			CREATE TABLE wp_sbi_sources (
+				id bigint(20) unsigned NOT NULL auto_increment,
+				account_id varchar(255) NOT NULL default '',
+                account_type varchar(255) NOT NULL default '',
+                privilege varchar(255) NOT NULL default '',
+                access_token varchar(1000) NOT NULL default '',
+                username varchar(255) NOT NULL default '',
+                info text NOT NULL default '',
+                error text NOT NULL default '',
+                expires datetime NOT NULL,
+                last_updated datetime NOT NULL,
+                author bigint(20) unsigned NOT NULL default '1',
+				connect_type varchar(100) NOT NULL default '',
+                PRIMARY KEY  (id),
+                KEY account_type (account_type(191)),
+                KEY author (author)
+            ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci; made by require_once('wp-admin/admin.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, sbi_check_for_db_updates, InstagramFeed\Builder\SBI_Db::create_tables
+[22-Mar-2026 16:40:38 UTC] PHP Warning:  Attempt to read property "ID" on array in /home/adrian-benavente/Local Sites/delfinalopezbenavente/app/public/wp-content/themes/blocksy/inc/meta-boxes.php on line 24

@@ -1,0 +1,50 @@
+{
+	"title": "DLB Footer",
+	"type": "footer",
+	"version": "0.4",
+	"page_settings": {
+		"content_wrapper_html_tag": "footer",
+		"background_background": "classic",
+		"background_color": "#66316b"
+	},
+	"content": [
+		{
+			"id": "q7r8s9t0",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "full",
+				"flex_direction": "column",
+				"flex_align_items": "center",
+				"padding": {
+					"unit": "px",
+					"top": "40",
+					"right": "40",
+					"bottom": "40",
+					"left": "40",
+					"isLinked": true
+				}
+			},
+			"elements": [
+				{
+					"id": "u1v2w3x4",
+					"elType": "widget",
+					"widgetType": "html",
+					"settings": {
+						"html": "<p style=\"text-align: center; color: #ffffff;\"><a href=\"mailto:contact@delfinalopezbenavente.com\" style=\"color: #ffffff;\">contact@delfinalopezbenavente.com</a> · <a href=\"https://instagram.com/ejemplo\" target=\"_blank\" style=\"color: #ffffff;\">Instagram</a></p>"
+					},
+					"elements": []
+				},
+				{
+					"id": "y5z6a7b8",
+					"elType": "widget",
+					"widgetType": "html",
+					"settings": {
+						"html": "<p style=\"text-align: center; font-size: 14px; color: rgba(255,255,255,0.85);\">© 2025 Delfina López Benavente</p>"
+					},
+					"elements": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,71 @@
+{
+	"title": "DLB Header",
+	"type": "header",
+	"version": "0.4",
+	"page_settings": {
+		"content_wrapper_html_tag": "header"
+	},
+	"content": [
+		{
+			"id": "a1b2c3d4",
+			"elType": "container",
+			"isInner": false,
+			"settings": {
+				"content_width": "full",
+				"flex_direction": "row",
+				"flex_justify_content": "space-between",
+				"flex_align_items": "center",
+				"padding": {
+					"unit": "px",
+					"top": "20",
+					"right": "40",
+					"bottom": "20",
+					"left": "40",
+					"isLinked": false
+				}
+			},
+			"elements": [
+				{
+					"id": "e5f6g7h8",
+					"elType": "widget",
+					"widgetType": "heading",
+					"settings": {
+						"title": "Delfina López Benavente",
+						"header_size": "h4",
+						"link": {
+							"url": "/",
+							"is_external": "",
+							"nofollow": ""
+						}
+					},
+					"elements": []
+				},
+				{
+					"id": "i9j0k1l2",
+					"elType": "widget",
+					"widgetType": "nav-menu",
+					"settings": {
+						"layout": "horizontal"
+					},
+					"elements": []
+				},
+				{
+					"id": "m3n4o5p6",
+					"elType": "widget",
+					"widgetType": "button",
+					"settings": {
+						"text": "Reservar una llamada",
+						"link": {
+							"url": "#contacto",
+							"is_external": "",
+							"nofollow": ""
+						},
+						"button_background_color": "#66316b",
+						"button_text_color": "#ffffff"
+					},
+					"elements": []
+				}
+			]
+		}
+	]
+}

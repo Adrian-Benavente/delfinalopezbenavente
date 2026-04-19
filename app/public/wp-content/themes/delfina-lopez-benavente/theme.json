@@ -1,0 +1,101 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/theme.json",
+	"version": 2,
+	"settings": {
+		"color": {
+			"palette": [
+				{
+					"slug": "principal",
+					"color": "#66316b",
+					"name": "Principal"
+				},
+				{
+					"slug": "principal-dark",
+					"color": "#400847",
+					"name": "Principal oscuro"
+				},
+				{
+					"slug": "principal-medium",
+					"color": "#510f59",
+					"name": "Principal medio"
+				},
+				{
+					"slug": "accent",
+					"color": "#714a84",
+					"name": "Acento"
+				},
+				{
+					"slug": "accent-light",
+					"color": "#9d7e98",
+					"name": "Acento claro"
+				},
+				{
+					"slug": "highlight",
+					"color": "#d291f2",
+					"name": "Destacado"
+				},
+				{
+					"slug": "muted",
+					"color": "#d5c7d6",
+					"name": "Suave"
+				},
+				{
+					"slug": "background-light",
+					"color": "#fcf4fd",
+					"name": "Fondo claro"
+				},
+				{
+					"slug": "white",
+					"color": "#ffffff",
+					"name": "Blanco"
+				},
+				{
+					"slug": "black",
+					"color": "#000000",
+					"name": "Negro"
+				}
+			]
+		},
+		"typography": {
+			"fontFamilies": [
+				{
+					"fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+					"slug": "primary",
+					"name": "Principal"
+				},
+				{
+					"fontFamily": "Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif",
+					"slug": "heading",
+					"name": "Títulos"
+				}
+			]
+		}
+	},
+	"styles": {
+		"color": {
+			"background": "var(--wp--preset--color--principal)",
+			"text": "var(--wp--preset--color--white)"
+		},
+		"typography": {
+			"fontFamily": "var(--wp--preset--font-family--primary)",
+			"fontSize": "1rem",
+			"lineHeight": "1.6"
+		},
+		"elements": {
+			"heading": {
+				"color": {
+					"text": "var(--wp--preset--color--white)"
+				},
+				"typography": {
+					"fontFamily": "var(--wp--preset--font-family--heading)",
+					"fontWeight": "700"
+				}
+			},
+			"link": {
+				"color": {
+					"text": "var(--wp--preset--color--white)"
+				}
+			}
+		}
+	}
+}
