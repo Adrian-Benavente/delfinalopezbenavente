@@ -1,3 +1,4 @@
 # All-in-One WP Migration local backups (.wpress often exceeds GitHub 100MB limit)
 app/public/wp-content/ai1wm-backups/
+app/public/wp-content/uploads/
 .cursor/
