@@ -171,6 +171,10 @@ function delfina_lopez_benavente_load_setup(): void {
 		if ( file_exists( $wpforms_file ) ) {
 			require_once $wpforms_file;
 		}
+		$fotografia_admin_file = get_stylesheet_directory() . '/inc/admin-fotografia.php';
+		if ( file_exists( $fotografia_admin_file ) ) {
+			require_once $fotografia_admin_file;
+		}
 	}
 }
 add_action( 'after_setup_theme', 'delfina_lopez_benavente_load_setup' );
