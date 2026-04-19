@@ -64,6 +64,27 @@ function delfina_lopez_benavente_setup_page(): void {
 		<?php
 	}
 
+	if ( isset( $_POST['dlb_save_instagram'] ) ) {
+		check_admin_referer( 'dlb_save_instagram' );
+		$raw = isset( $_POST['dlb_instagram_shortcode'] ) ? wp_unslash( $_POST['dlb_instagram_shortcode'] ) : '';
+		update_option( 'delfina_lopez_benavente_instagram_shortcode', sanitize_text_field( $raw ) );
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php esc_html_e( 'Shortcode guardado.', 'delfina-lopez-benavente' ); ?></p>
+		</div>
+		<?php
+	}
+
+	if ( isset( $_POST['dlb_clear_instagram'] ) ) {
+		check_admin_referer( 'dlb_clear_instagram' );
+		delete_option( 'delfina_lopez_benavente_instagram_shortcode' );
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><?php esc_html_e( 'Shortcode eliminado. Se mostrará el placeholder en la home.', 'delfina-lopez-benavente' ); ?></p>
+		</div>
+		<?php
+	}
+
 	if ( isset( $_GET['dlb_create_form'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'dlb_create_form' ) ) {
 		$form_id = delfina_lopez_benavente_create_contact_form();
 		if ( $form_id ) {
@@ -174,8 +195,51 @@ function delfina_lopez_benavente_setup_page(): void {
 			</a>
 		</p>
 		<p class="description">
-			<?php esc_html_e( 'Tras instalar, conecta tu cuenta de Instagram en la configuración del plugin. Luego añade el widget o shortcode en la sección correspondiente de la página de inicio.', 'delfina-lopez-benavente' ); ?>
+			<?php esc_html_e( 'Tras instalar, conecta tu cuenta de Instagram en la configuración del plugin. Luego pega su shortcode abajo para mostrarlo en la home.', 'delfina-lopez-benavente' ); ?>
 		</p>
+
+		<?php $ig_shortcode = (string) get_option( 'delfina_lopez_benavente_instagram_shortcode', '' ); ?>
+
+		<h3><?php esc_html_e( 'Shortcode del feed', 'delfina-lopez-benavente' ); ?></h3>
+		<form method="post" action="">
+			<?php wp_nonce_field( 'dlb_save_instagram' ); ?>
+			<p>
+				<label for="dlb_instagram_shortcode">
+					<?php esc_html_e( 'Pega aquí el shortcode del plugin:', 'delfina-lopez-benavente' ); ?>
+				</label>
+				<br>
+				<input
+					type="text"
+					id="dlb_instagram_shortcode"
+					name="dlb_instagram_shortcode"
+					value="<?php echo esc_attr( $ig_shortcode ); ?>"
+					class="regular-text"
+					placeholder="[instagram-feed feed=1]"
+				>
+			</p>
+			<p>
+				<button type="submit" name="dlb_save_instagram" class="button button-primary">
+					<?php esc_html_e( 'Guardar shortcode', 'delfina-lopez-benavente' ); ?>
+				</button>
+			</p>
+		</form>
+
+		<?php if ( ! empty( $ig_shortcode ) ) : ?>
+			<form method="post" action="" style="margin-top: 0.5rem;">
+				<?php wp_nonce_field( 'dlb_clear_instagram' ); ?>
+				<button type="submit" name="dlb_clear_instagram" class="button">
+					<?php esc_html_e( 'Quitar shortcode', 'delfina-lopez-benavente' ); ?>
+				</button>
+			</form>
+
+			<h4><?php esc_html_e( 'Vista previa', 'delfina-lopez-benavente' ); ?></h4>
+			<div style="border: 1px solid #dcdcde; padding: 1rem; background: #fff; max-width: 900px;">
+				<?php echo do_shortcode( $ig_shortcode ); ?>
+			</div>
+			<p class="description">
+				<?php esc_html_e( 'La previsualización carga el shortcode tal cual. Si el plugin solo encola sus estilos/scripts en el front, la vista previa puede verse sin estilos; en la home se verá correcto.', 'delfina-lopez-benavente' ); ?>
+			</p>
+		<?php endif; ?>
 
 		<hr>
 		<h2><?php esc_html_e( 'Creación manual', 'delfina-lopez-benavente' ); ?></h2>

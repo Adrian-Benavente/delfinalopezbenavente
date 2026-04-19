@@ -312,3 +312,20 @@ function delfina_lopez_benavente_get_fotografia_folder_images( ?int $limit = nul
 
 	return $result;
 }
+
+/**
+ * Feed the Instagram shortcode filter from the DLB Setup option.
+ *
+ * Respects previous non-empty values from other filters.
+ *
+ * @param string $shortcode Shortcode provided by earlier filters (may be empty).
+ * @return string Shortcode to render in the Instagram section.
+ */
+function delfina_lopez_benavente_filter_instagram_shortcode( string $shortcode ): string {
+	if ( $shortcode !== '' ) {
+		return $shortcode;
+	}
+
+	return (string) get_option( 'delfina_lopez_benavente_instagram_shortcode', '' );
+}
+add_filter( 'delfina_lopez_benavente_instagram_shortcode', 'delfina_lopez_benavente_filter_instagram_shortcode' );
